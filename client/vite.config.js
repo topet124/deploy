@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://deploy-lemon-gamma.vercel.app/api",
+        target: "https://deploy-lemon-gamma.vercel.app/api/v1",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
