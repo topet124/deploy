@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+const cors = require("cors");
 const app = express();
 import morgan from "morgan";
 import mongoose from "mongoose";
@@ -11,15 +12,20 @@ import cookieParser from "cookie-parser";
 // routes
 import authRouter from "./routes/authRouter.js";
 
-// public
-
 // middleware
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
+
+const corsOptions = {
+  origin: "http://localhost:5106",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
