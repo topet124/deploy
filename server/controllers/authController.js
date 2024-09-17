@@ -33,9 +33,7 @@ export const login = async (req, res) => {
   res.cookie("token", token, {
   httpOnly: true,
   expires: new Date(Date.now() + oneDay),
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "strict", // or 'lax' depending on your requirements
-  domain: process.env.NODE_ENV === "production" ? ".vercel.app" : "localhost"
+  secure: true,
 });
   res.status(StatusCodes.OK).json({ msg: "user logged in" });
 };
