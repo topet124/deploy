@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customFetch = axios.create({
-  baseURL: "/api",
+  baseURL: "https://deploy-lemon-gamma.vercel.app/api/v1",
 });
 
 const JobCustomFetch = axios.create({
