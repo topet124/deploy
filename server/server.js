@@ -12,19 +12,14 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/authRouter.js";
 
 // public
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import path from "path";
 
 // middleware
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -38,7 +33,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
-app.use;
 
 //#### Error Middleware
 
