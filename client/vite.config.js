@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
+      "https://deploy-lemon-gamma.vercel.app/api": {
         target: "http://localhost:5106/api",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
